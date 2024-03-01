@@ -9,6 +9,7 @@ from nltk import word_tokenize
 from spellchecker import SpellChecker
 from lexical_diversity import lex_div as ld
 import spacy
+import textstat
 #word_frequency("Data", "en")
 
 class complexity:
