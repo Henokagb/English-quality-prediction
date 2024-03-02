@@ -21,7 +21,7 @@ To run this notebook locally or in a Python environment:
    jupyter notebook
 
 Or open jupyter notebook graphically.
-If you are in a python environment, don't forget to lauch jupyter notebook inside this environment
+If you are in a python environment, don't forget to launch jupyter notebook inside this environment
 
 
 ### With Docker
