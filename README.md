@@ -32,6 +32,7 @@ Build the image
    docker build -t english-grader .
 
 Run the image
+
    ```bash
    docker run -p 8888:8888 english-grader
 
