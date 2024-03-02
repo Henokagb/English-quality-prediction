@@ -24,7 +24,7 @@ Or open jupyter notebook graphically.
 If you are in a python environment, don't forget to lauch jupyter notebook inside this environment
 
 
-### Whith Docker
+### With Docker
 
 Build the image
 
