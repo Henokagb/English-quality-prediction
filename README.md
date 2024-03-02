@@ -26,12 +26,12 @@ If you are in a python environment, don't forget to lauch jupyter notebook insid
 
 ### With Docker
 
-Build the image
+1. Build the image
 
    ```bash
    docker build -t english-grader .
 
-Run the image
+2. Run the image
 
    ```bash
    docker run -p 8888:8888 english-grader
