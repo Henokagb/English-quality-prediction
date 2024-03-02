@@ -15,7 +15,8 @@ To run this notebook locally or in a Python environment:
    ```bash
    pip install -r requirements.txt
 
-Use the command
+2. Use the command:
+
    ```bash
    jupyter notebook
 
@@ -23,7 +24,8 @@ Or open jupyter notebook graphically.
 If you are in a python environment, don't forget to lauch jupyter notebook inside this environment
 
 
-#Whith Docker
+###Whith Docker
+
 Build the image
 
    ```bash
