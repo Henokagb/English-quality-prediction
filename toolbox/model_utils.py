@@ -34,13 +34,10 @@ def named_entity_recognition(text):
     Returns:
     - list: List of named entities and their labels.
     """
-    # Load the English language model
     nlp = spacy.load("en_core_web_sm")
 
-    # Process the text with spaCy NLP pipeline
     doc = nlp(text)
 
-    # Extract named entities and their labels
     entities = [(ent.text, ent.label_) for ent in doc.ents]
     
     return len(entities)
@@ -101,25 +98,19 @@ def dependency_parse_features(text):
     Returns:
     - dict: Dictionary of dependency parse features.
     """
-    # Load the English language model
     nlp = spacy.load("en_core_web_sm")
 
-    # Process the text with spaCy NLP pipeline
     doc = nlp(text)
 
-    # Initialize feature counters
     num_dependencies = 0
     dep_types = set()
 
-    # Iterate over tokens and extract features from the dependency parse
     for token in doc:
         num_dependencies += len(list(token.children))
         dep_types.add(token.dep_)
 
-    # Calculate average number of dependencies per token
     avg_dependencies_per_token = num_dependencies / len(doc)
 
-    # Create a dictionary of features
     return num_dependencies
 
 def avg_dependencies_per_token(text):
@@ -132,25 +123,19 @@ def avg_dependencies_per_token(text):
     Returns:
     - dict: Dictionary of dependency parse features.
     """
-    # Load the English language model
     nlp = spacy.load("en_core_web_sm")
 
-    # Process the text with spaCy NLP pipeline
     doc = nlp(text)
 
-    # Initialize feature counters
     num_dependencies = 0
     dep_types = set()
 
-    # Iterate over tokens and extract features from the dependency parse
     for token in doc:
         num_dependencies += len(list(token.children))
         dep_types.add(token.dep_)
 
-    # Calculate average number of dependencies per token
     avg_dependencies_per_token = num_dependencies / len(doc)
 
-    # Create a dictionary of features
     return avg_dependencies_per_token
 
 def unique_dependency_types(text):
@@ -163,26 +148,19 @@ def unique_dependency_types(text):
     Returns:
     - dict: Dictionary of dependency parse features.
     """
-    # Load the English language model
     nlp = spacy.load("en_core_web_sm")
 
-    # Process the text with spaCy NLP pipeline
     doc = nlp(text)
 
-    # Initialize feature counters
     num_dependencies = 0
     dep_types = set()
 
-    # Iterate over tokens and extract features from the dependency parse
     for token in doc:
         num_dependencies += len(list(token.children))
         dep_types.add(token.dep_)
 
-    # Calculate average number of dependencies per token
     avg_dependencies_per_token = num_dependencies / len(doc)
 
-    # Create a dictionary of features
-    
     return len(dep_types)
 
 def noun_verb_ratio(text):
@@ -195,24 +173,19 @@ def noun_verb_ratio(text):
     Returns:
     - float: Noun-Verb Ratio.
     """
-    # Load the English language model
     nlp = spacy.load("en_core_web_sm")
 
-    # Process the text with spaCy NLP pipeline
     doc = nlp(text)
 
-    # Initialize counters for nouns and verbs
     noun_count = 0
     verb_count = 0
 
-    # Iterate over tokens and count nouns and verbs
     for token in doc:
         if token.pos_ == 'NOUN':
             noun_count += 1
         elif token.pos_ == 'VERB':
             verb_count += 1
 
-    # Calculate the Noun-Verb Ratio
     if verb_count > 0:
         ratio = noun_count / verb_count
     else:
@@ -230,19 +203,14 @@ def word_entropy(text):
     Returns:
     - float: Word Entropy.
     """
-    # Tokenize the text into words
     words = text.split()
 
-    # Calculate the frequency distribution of words
     word_counts = Counter(words)
 
-    # Calculate the total number of words
     total_words = len(words)
 
-    # Calculate word probabilities
     probabilities = [count / total_words for count in word_counts.values()]
 
-    # Calculate word entropy
     entropy = -sum(p * math.log2(p) for p in probabilities)
 
     return entropy
@@ -268,11 +236,11 @@ def read_time_difficulty_estimate(text):
 
     # Estimate difficulty based on average word length and unique word count
     if avg_word_length <= 4 and unique_word_count <= 50:
-        return 'Easy'
-    elif avg_word_length <= 6 and unique_word_count <= 100:
         return 0
-    else:
+    elif avg_word_length <= 6 and unique_word_count <= 100:
         return 1
+    else:
+        return 2
 
     
 def syllable_count(text):
