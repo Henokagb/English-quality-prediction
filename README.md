@@ -36,4 +36,6 @@ If you are in a python environment, don't forget to launch jupyter notebook insi
    ```bash
    docker run -p 8888:8888 english-grader
 
-Finally, open the file model_test.ipynb and run all the cells
+Open the file model_test.ipynb and run all the cells
+
+When all the cell are run, go to the last cell and set the essay_example variable to the an essay of your choice. Then, run the cell again to get the note.
