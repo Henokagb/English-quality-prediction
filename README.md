@@ -40,4 +40,4 @@ Open the file model_test.ipynb and run all the cells
 
 When all the cell are run, go to the last cell and set the essay_example variable to the an essay of your choice. Then, run the cell again to get the note.
 
-![Get the prediction](Screenshot 2024-03-03 094646.png)
+![Get the prediction](Screenshot-2024-03-03 094646.png)
