@@ -330,7 +330,7 @@ def co_reference_features(text):
         co_reference_features_list.append(co_reference_info)
 
     return len(co_reference_features_list)
-
+"""
 def get_prediction(essay, xg_reg, gen, reada, qual, comp):
     data = [gen.get_token_nbr(essay), gen.get_mean_len(essay), qual.get_sophisticated_nbr(essay),
             qual.level_of_language(essay), reada.g_fog(essay), reada.ari(essay),
@@ -354,6 +354,33 @@ def get_prediction(essay, xg_reg, gen, reada, qual, comp):
                'unique_dependency_types', 'avg_dependencies_per_token',
                'dependency_parse_features', 'read_time_estimate', 'generate_ngrams',
                'unique_word_count', 'stopword_count']
+
+    df_essay = pd.DataFrame(data_reshaped, columns=columns)
+    y_pred_valid = xg_reg.predict(df_essay)
+    return y_pred_valid[0]
+"""
+def get_prediction(essay, xg_reg, gen, reada, qual, comp):
+    data = [gen.get_token_nbr(essay), gen.get_mean_len(essay), qual.get_sophisticated_nbr(essay),
+            reada.g_fog(essay), reada.ari(essay),
+            reada.smog_index(essay), reada.flesch_kincaid(essay), comp.coleman_liau(essay),
+            reada.dale_chall_readability(essay), comp.root_ttr(essay), comp.ttr(essay),
+            comp.log_ttr(essay), comp.mass_ttr(essay), comp.msttr(essay), comp.mtld(essay),
+            negative_score(essay), positive_score(essay),
+            word_entropy(essay), noun_verb_ratio(essay), unique_dependency_types(essay),
+            dependency_parse_features(essay),
+            read_time_estimate(essay), generate_ngrams(essay),
+            unique_word_count(essay), stopword_count(essay)]
+
+    # Reshape the data to match the model's expectations
+    data_reshaped = [data]
+
+    columns = ['token_nbr', 'mean_len', 'sophisticated_nbr', 'gunning_fog', 'ari',
+       'smog_index', 'flesch_kincaid', 'dale_chall_readability',
+       'coleman_liau', 'root_ttr', 'ttr', 'log_ttr', 'mass_ttr', 'msttr',
+       'mtld', 'negative_score', 'positive_score', 'word_entropy',
+       'noun_verb_ratio', 'unique_dependency_types',
+       'dependency_parse_features', 'read_time_estimate', 'generate_ngrams',
+       'unique_word_count', 'stopword_count']
 
     df_essay = pd.DataFrame(data_reshaped, columns=columns)
     y_pred_valid = xg_reg.predict(df_essay)
