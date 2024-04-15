@@ -1,4 +1,5 @@
 # English Quality Prediction
+Authors: @spero2003 , @YamamotoGenryuusai , @Marcel229225
 
 The goal of this model is to provide a score to an essay based on thousands of graded essays.
 
